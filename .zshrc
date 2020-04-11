@@ -104,6 +104,8 @@ source $ZSH/oh-my-zsh.sh
 export SDKMAN_DIR="/Users/furkanbegen/.sdkman"
 [[ -s "/Users/furkanbegen/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/furkanbegen/.sdkman/bin/sdkman-init.sh"
 
+alias la='ls -A'
+
 export GOPATH=$HOME/go
 export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOBIN
