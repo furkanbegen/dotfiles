@@ -70,5 +70,5 @@ cursor:
   unfocused_hollow: true
 
 key_bindings:
-  - { key: N, mods: Control, action: SpawnNewInstance }
+  - { key: N, mods: Control|Shift, action: SpawnNewInstance }
 
