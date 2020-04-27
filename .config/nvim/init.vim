@@ -25,8 +25,7 @@ map <C-s> :source ~/.config/nvim/init.vim<CR>
 map <F1> :colorscheme PaperColor<CR>
 map <F2> :colorscheme gruvbox<CR>
 map <F3> :colorscheme hybrid_reverse<CR>
-map <F4> :colorscheme PaperColor<CR>
-map <F5> :colorscheme spacegray<CR>
+map <F4> :colorscheme spacegray<CR>
 
 
 "--------------------- COC Settings ---------------------------
