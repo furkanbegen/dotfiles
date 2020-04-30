@@ -13,6 +13,9 @@ call plug#begin('~/.vim/plugged')
 call plug#end()
 
 set number relativenumber
+set cursorline
+set splitright
+set splitbelow
 set background=dark
 colorscheme PaperColor
 let g:go_def_mapping_enabled = 0
@@ -20,6 +23,8 @@ let g:go_def_mapping_enabled = 0
 map <C-n> :NERDTreeToggle<CR>
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
 
 map <C-s> :source ~/.config/nvim/init.vim<CR>
 map <F1> :colorscheme PaperColor<CR>
