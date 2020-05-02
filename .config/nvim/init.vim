@@ -23,8 +23,6 @@ let g:go_def_mapping_enabled = 0
 map <C-n> :NERDTreeToggle<CR>
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
 
 noremap <Up> <Nop>
 noremap <Down> <Nop>
