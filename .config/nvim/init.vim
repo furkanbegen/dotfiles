@@ -26,6 +26,15 @@ let g:NERDTreeDirArrowCollapsible = '▾'
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
+"i means that insert mode"
+inoremap <UP> <Nop>
+inoremap <Down> <Nop>
+inoremap <Left> <Nop>
+inoremap <Right> <Nop>
 map <C-s> :source ~/.config/nvim/init.vim<CR>
 map <F1> :colorscheme PaperColor<CR>
 map <F2> :colorscheme gruvbox<CR>
