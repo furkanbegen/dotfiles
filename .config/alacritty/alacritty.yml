@@ -15,13 +15,13 @@ dynamic_title: true
 # Font Customization
 font:
   normal:
-    family: Meslo LG L DZ Regular for Powerline 
+    family: Jetbrains Mono 
     style: Regular
   bold:
-    family: Meslo LG L DZ Bold for Powerline 
+    family: Jetbrains Mono 
     style: Bold
   italic:
-    family: Meslo LG L DZ Italic for Powerline 
+    family: Jetbrains Mono 
     style: Italic
   size: 15
   offset:
