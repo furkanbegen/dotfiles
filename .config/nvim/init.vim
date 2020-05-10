@@ -5,6 +5,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
+    Plug 'ctrlpvim/ctrlp.vim'
 "Color Schemes
     Plug 'kristijanhusak/vim-hybrid-material'
     Plug 'NLKNguyen/papercolor-theme'
@@ -23,6 +24,8 @@ let g:go_def_mapping_enabled = 0
 map <C-n> :NERDTreeToggle<CR>
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
 
 noremap <Up> <Nop>
 noremap <Down> <Nop>
@@ -33,6 +36,10 @@ inoremap <UP> <Nop>
 inoremap <Down> <Nop>
 inoremap <Left> <Nop>
 inoremap <Right> <Nop>
+nnoremap <silent> <Tab>l :tabnext<CR>
+nnoremap <silent> <Tab>h :tabprevious<CR>
+nnoremap <silent> <Tab>n :tabnext<CR>
+nnoremap <silent> <Tab>p :tabprevious<CR>
 map <C-s> :source ~/.config/nvim/init.vim<CR>
 map <F1> :colorscheme PaperColor<CR>
 map <F2> :colorscheme gruvbox<CR>
