@@ -6,6 +6,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
     Plug 'ctrlpvim/ctrlp.vim'
+    Plug 'tpope/vim-fugitive'
 "Color Schemes
     Plug 'kristijanhusak/vim-hybrid-material'
     Plug 'NLKNguyen/papercolor-theme'
