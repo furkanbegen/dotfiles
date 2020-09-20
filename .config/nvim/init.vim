@@ -7,20 +7,34 @@ call plug#begin('~/.vim/plugged')
     Plug 'vim-airline/vim-airline-themes'
     Plug 'ctrlpvim/ctrlp.vim'
     Plug 'tpope/vim-fugitive'
-"Color Schemes
-    Plug 'kristijanhusak/vim-hybrid-material'
-    Plug 'NLKNguyen/papercolor-theme'
-    Plug 'ajh17/Spacegray.vim'
     Plug 'morhetz/gruvbox'
+    Plug 'frazrepo/vim-rainbow'
 call plug#end()
 
+set nocompatible
+filetype off
+filetype plugin indent on
 set number relativenumber
+set hlsearch              " Highlight found searches
+set hidden
+set nobackup              " No auto backup
+set noswapfile            " No swap
 set cursorline
 set splitright
 set splitbelow
-set background=dark
-colorscheme PaperColor
+set t_Co=256              " Set if term supports 256 colors.
+set clipboard=unnamedplus " Copy/paste between vim and other programs
+
+set expandtab             " Use spaces instead of tab
+set smarttab
+set shiftwidth=4          " One tab == four spaces.
+set tabstop=4             " One tab == four spaces.
+
+
+colorscheme gruvbox
+
 let g:go_def_mapping_enabled = 0
+let rainbow_active = 1
 
 map <C-n> :NERDTreeToggle<CR>
 let g:NERDTreeDirArrowExpandable = '▸'
@@ -46,10 +60,6 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 map <C-s> :source ~/.config/nvim/init.vim<CR>
-map <F1> :colorscheme PaperColor<CR>
-map <F2> :colorscheme gruvbox<CR>
-map <F3> :colorscheme hybrid_reverse<CR>
-map <F4> :colorscheme spacegray<CR>
 
 
 "--------------------- COC Settings ---------------------------
