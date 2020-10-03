@@ -1,3 +1,4 @@
+alt_send_esc: false
 # Window Customization
 window:
   dimensions:
