@@ -8,7 +8,7 @@ export ZSH="/Users/furkanbegen/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="agnoster"
+ZSH_THEME="warlord"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -99,11 +99,6 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/Users/furkanbegen/.sdkman"
-[[ -s "/Users/furkanbegen/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/furkanbegen/.sdkman/bin/sdkman-init.sh"
-
 alias la='ls -A'
 
 export GOPATH=$HOME/go
@@ -111,3 +106,8 @@ export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOBIN
 DEFAULT_USER=$(whoami)
 export LC_ALL=en_US.UTF-8
+
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/Users/furkanbegen/.sdkman"
+[[ -s "/Users/furkanbegen/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/furkanbegen/.sdkman/bin/sdkman-init.sh"
