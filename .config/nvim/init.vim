@@ -141,6 +141,9 @@ function! s:show_documentation()
   endif
 endfunction
 
+" Auto format code and add missing imports in go files. Runs automaticly on save
+autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
+
 " Highlight symbol under cursor on CursorHold
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
