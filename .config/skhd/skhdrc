@@ -114,9 +114,9 @@ ctrl + cmd - v : open /Applications/Visual\ Studio\ Code.app
 ctrl + cmd - z : open /Applications/zoom.us.app
 ctrl + cmd - w : open /Applications/WhatsApp.app
 ctrl + cmd  - t : open /Applications/Toggl\ Track.app
-ctrl + shift - d : open /Applications/Discord.app
 ctrl + cmd - return : open /Applications/Alacritty.app
 cmd + shift - i : idea
+cmd + ctrl + shift - d : open /Applications/Discord.app
 
 alt + cmd - s : open /Applications/Slack.app 
 
