@@ -116,8 +116,10 @@ ctrl + cmd - w : open /Applications/WhatsApp.app
 ctrl + cmd  - t : open /Applications/Toggl\ Track.app
 ctrl + cmd - return : open /Applications/Alacritty.app
 cmd + shift - i : idea
-cmd + shift - t : open /Applications/Telegram.app
 cmd + ctrl + shift - d : open /Applications/Discord.app
+cmd + ctrl + shift - t : open /Applications/Telegram.app
+cmd + ctrl + shift - b : open /Applications/Binance.app
+cmd + ctrl + shift - s : open /Applications/Safari.app
 
 alt + cmd - s : open /Applications/Slack.app 
 
