@@ -18,7 +18,12 @@ set number relativenumber
 set hlsearch              " Highlight found searches
 set hidden
 set nobackup              " No auto backup
+set noerrorbells
+set nowrap
 set noswapfile            " No swap
+set nobackup
+set nowritebackup
+set signcolumn=yes
 set cursorline
 set splitright
 set splitbelow
@@ -33,8 +38,16 @@ set tabstop=4             " One tab == four spaces.
 nnoremap <CR> :noh<CR><CR> 
 
 
-colorscheme gruvbox
+" Better display for messages
+set cmdheight=2
 
+" You will have bad experience for diagnostic messages when it's default 4000.
+set updatetime=300
+
+" don't give |ins-completion-menu| messages.
+set shortmess+=c
+
+colorscheme gruvbox
 let g:go_def_mapping_enabled = 0
 let g:go_highlight_build_constraints = 1
 let g:go_highlight_extra_types = 1
@@ -81,24 +94,6 @@ map <C-s> :source ~/.config/nvim/init.vim<CR>
 
 
 "--------------------- COC Settings ---------------------------
-" if hidden is not set, TextEdit might fail.
-set hidden
-
-" Some servers have issues with backup files, see #649
-set nobackup
-set nowritebackup
-
-" Better display for messages
-set cmdheight=2
-
-" You will have bad experience for diagnostic messages when it's default 4000.
-set updatetime=300
-
-" don't give |ins-completion-menu| messages.
-set shortmess+=c
-
-" always show signcolumns
-set signcolumn=yes
 
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
