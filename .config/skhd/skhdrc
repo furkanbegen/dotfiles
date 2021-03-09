@@ -105,29 +105,34 @@
 #    "qutebrowser"
 # ]
 
+# Browsers
 ctrl + cmd - b : open /Applications/Firefox.app 
+ctrl + cmd - c : open /Applications/Google\ Chrome.app
+ctrl + cmd - s : open /Applications/Safari.app
+
+# Mail Client
 ctrl + cmd - m : open /Applications/Microsoft\ Outlook.app
+ctrl + cmd + shift - m : open /Applications/Spark.app
+
+# Note Taking
 ctrl + cmd - n : open /Applications/Notion.app
-ctrl + cmd - p : open /Applications/Postman.app
-ctrl + cmd - 5 : open /Applications/BIG-IP\ Edge\ Client.app
-ctrl + cmd - v : open /Applications/Visual\ Studio\ Code.app
-ctrl + cmd - z : open /Applications/zoom.us.app
+# Messaging
 ctrl + cmd - w : open /Applications/WhatsApp.app
-ctrl + cmd  - t : open /Applications/Toggl\ Track.app
-ctrl + cmd - return : open /Applications/Alacritty.app
-cmd + shift - i : idea
 cmd + ctrl + shift - d : open /Applications/Discord.app
 cmd + ctrl + shift - t : open /Applications/Telegram.app
-cmd + ctrl + shift - b : open /Applications/Binance.app
-cmd + ctrl + shift - s : open /Applications/Safari.app
-
 alt + cmd - s : open /Applications/Slack.app 
 
-shift + cmd - m : open /Applications/Spotify.app
+# Development 
+cmd + shift - i : idea
+ctrl + cmd - v : open /Applications/Visual\ Studio\ Code.app
 shift + alt - d : open /Applications/DataGrip.app
-shift + alt - a : open /Applications/Alacritty.app
+ctrl + cmd - p : open /Applications/Postman.app
 
-
-
-
+# Other
+ctrl + cmd - return : open /Applications/Alacritty.app
+ctrl + cmd - z : open /Applications/zoom.us.app
+ctrl + cmd  - t : open /Applications/Toggl\ Track.app
+cmd + ctrl + shift - b : open /Applications/Binance.app
+shift + cmd - m : open /Applications/Spotify.app
+ctrl + cmd + shift - p : open /Applications/PassWall.app
 
