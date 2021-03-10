@@ -221,7 +221,7 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = { "go", "java", "html", "css", "javascript", "php" }, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  ensure_installed = { "go", "java", "html", "css", "javascript", "php", "json" }, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
   highlight = {
     enable = true,              -- false will disable the whole extension
     disable = { "c", "rust" },  -- list of language that will be disabled
