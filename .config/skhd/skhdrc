@@ -136,3 +136,82 @@ cmd + ctrl + shift - b : open /Applications/Binance.app
 shift + cmd - m : open /Applications/Spotify.app
 ctrl + cmd + shift - p : open /Applications/PassWall.app
 
+##############################
+# YABAI                      #
+# RELATED                    #
+# SHORTCUTS                  #
+##############################
+
+## Quickly restart the yabai launch agent
+ctrl + alt + cmd - r : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
+
+## Close active application
+hyper - backspace : $(yabai -m window $(yabai -m query --windows --window | jq -re ".id") --close)
+
+## swap window
+shift + alt - h : yabai -m window --swap west
+shift + alt - l : yabai -m window --swap east
+shift + alt - j : yabai -m window --swap south
+shift + alt - k : yabai -m window --swap north
+hyper - 0x21 : yabai -m window --swap east # 0x21 is the "[" key
+
+## focus display
+ctrl + cmd - 1 : yabai -m window --display 1 yabai -m display --focus 1
+ctrl + cmd - 2 : yabai -m window --display 2 yabai -m display --focus 2
+
+#Move active window to next space on current display
+hyper - 1 : yabai -m query --spaces --space | jq -re ".index" | xargs -I {} bash -c "if [[ '{}' = '1' ]]; then yabai -m window --space 2; elif [[ '{}' = '2' ]]; then yabai -m window --space 1; fi"
+hyper - 2 : yabai -m query --spaces --space | jq -re ".index" | xargs -I {} bash -c "if [[ '{}' = '3' ]]; then yabai -m window --space 4; elif [[ '{}' = '4' ]]; then yabai -m window --space 3; fi"
+hyper - 3 : yabai -m query --spaces --space | jq -re ".index" | xargs -I {} bash -c "if [[ '{}' = '5' ]]; then yabai -m window --space 6; elif [[ '{}' = '6' ]]; then yabai -m window --space 5; fi"
+
+
+## increase window size
+ctrl + cmd + alt - left : yabai -m window --resize left:-20:0
+ctrl + cmd + alt - down : yabai -m window --resize bottom:0:20
+#shift + alt - w : yabai -m window --resize top:0:-20
+#shift + alt - d : yabai -m window --resize right:20:0
+
+## decrease window size
+ctrl + cmd + alt - right : yabai -m window --resize left:20:0
+ctrl + cmd + alt - up : yabai -m window --resize bottom:0:-20
+#shift + cmd - w : yabai -m window --resize top:0:20
+#shift + cmd - d : yabai -m window --resize right:-20:0
+
+## rotate tree 90
+ctrl + shift + alt + cmd - r : yabai -m space --rotate 90
+
+# mirror tree y-axis
+alt - y : yabai -m space --mirror y-axis
+## mirror tree x-axis
+alt - x : yabai -m space --mirror x-axis
+
+## toggle window fullscreen zoom
+ctrl + shift + cmd - f : yabai -m window --toggle zoom-fullscreen
+
+#hyper - 0x29 : yabai -m query --spaces \
+#hyper - o : yabai -m query --spaces | jq -re ".[] | select(.visible == 1).index" | xargs -I{} yabai -m query --windows --space {} | jq -sre "add | sort_by(.display, .frame.x, .frame.y, .id) | reverse | nth(index(map(select(.focused == 1))) - 1).id" | xargs -I{} yabai -m window --focus {}
+
+## float / unfloat window and center on screen
+alt - t : yabai -m window --toggle float;\
+yabai -m window --grid 4:4:1:1:2:2 ## toggle sticky alt - s : yabai -m window --toggle sticky ## toggle sticky, float and resize to picture-in-picture size alt - p : yabai -m window --toggle sticky;\ yabai -m window --grid 5:5:4:0:1:1 ## change layout of desktop ctrl + alt - a : yabai -m space --layout bsp ctrl + alt - d : yabai -m space --layout float
+
+## toggle window split type
+#alt - e : yabai -m window --toggle split
+
+## toggle window border
+#shift + alt - b : yabai -m window --toggle border
+
+## create desktop, move window and follow focus
+shift + cmd - n : yabai -m space --create && \
+index="$(yabai -m query --spaces --display | jq 'map(select(."native-fullscreen" == 0))[-1].index')" && \
+yabai -m window --space "${index}" && \
+yabai -m space --focus "${index}"
+
+## create desktop and follow focus
+shift + alt - n : yabai -m space --create && \
+index="$(yabai -m query --spaces --display | jq 'map(select(."native-fullscreen" == 0))[-1].index')" && \
+yabai -m space --focus "${index}"
+
+## destroy desktop
+cmd + alt - w : yabai -m space --destroy
+
