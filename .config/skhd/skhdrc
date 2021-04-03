@@ -154,8 +154,15 @@ shift + alt - l : yabai -m window --swap east
 shift + alt - j : yabai -m window --swap south
 shift + alt - k : yabai -m window --swap north
 
+## swap focus 
+shift + cmd - h : yabai -m window --focus west
+shift + cmd - l : yabai -m window --focus east
+shift + cmd - j : yabai -m window --focus south
+shift + cmd - k : yabai -m window --focus north
+
+
 ## focus display
-ctrl + cmd - 1 : yabai -m window --display 1 yabai -m display --focus 1
+ctrl + cmd - 1 : yabai -m window --display 1 yabai -m display --focus 1 
 ctrl + cmd - 2 : yabai -m window --display 2 yabai -m display --focus 2
 
 ## increase window size
@@ -188,15 +195,17 @@ yabai -m window --grid 4:4:1:1:2:2 ## toggle sticky alt - s : yabai -m window --
 #shift + alt - b : yabai -m window --toggle border
 
 ## create desktop, move window and follow focus
-shift + cmd - n : yabai -m space --create && \
-index="$(yabai -m query --spaces --display | jq 'map(select(."native-fullscreen" == 0))[-1].index')" && \
-yabai -m window --space "${index}" && \
-yabai -m space --focus "${index}"
+shift + cmd - n :  yabai -m space --create \
+	&& wid="$(yabai -m query --windows --window | jq -r '.id')" \
+	&& sidx="$(yabai -m query --spaces --display | jq -r 'map(select(."native-fullscreen" == 0))[-1].index')" \
+	&& yabai -m window "${wid}" --space "${sidx}" \
+	&& yabai -m window --focus "${wid}"
 
 ## create desktop and follow focus
-shift + alt - n : yabai -m space --create && \
-index="$(yabai -m query --spaces --display | jq 'map(select(."native-fullscreen" == 0))[-1].index')" && \
-yabai -m space --focus "${index}"
+shift + alt - n : yabai -m space --create \
+	&& wid="$(yabai -m query --windows --window | jq -r '.id')" \
+	&& sidx="$(yabai -m query --spaces --display | jq -r 'map(select(."native-fullscreen" == 0))[-1].index')" \
+	&& yabai -m window "${wid}" --space "${sidx}"
 
 ## destroy desktop
 cmd + alt - w : yabai -m space --destroy
@@ -208,13 +217,15 @@ cmd + shift + ctrl - y: yabai -m space --focus next || yabai -m space --focus fi
 cmd + shift + ctrl - r: yabai -m space --focus prev || yabai -m space --focus last
 
 # Move space right
-cmd + shift + ctrl - e: yabai -m space --move next
+cmd + shift + alt - right: yabai -m space --move next 
 
 # Move space let
-cmd + shift + ctrl - p: yabai -m space --move prev
+cmd + shift + alt - left: yabai -m space --move prev
 
 # move window to previous space
-cmd + shift + ctrl - o: yabai -m window --space prev
+cmd + shift + ctrl - left: yabai -m window --space prev && \
+yabai -m window --focus $(yabai -m query --windows --window | jq -re ".id")
 
 # move window to next space
-cmd + shift + ctrl - i: yabai -m window --space next
+cmd + shift + ctrl - right: yabai -m window --space next && \
+yabai -m window --focus $(yabai -m query --windows --window | jq -re ".id")
