@@ -223,9 +223,7 @@ cmd + shift + alt - right: yabai -m space --move next
 cmd + shift + alt - left: yabai -m space --move prev
 
 # move window to previous space
-cmd + shift + ctrl - left: yabai -m window --space prev && \
-yabai -m window --focus $(yabai -m query --windows --window | jq -re ".id")
+cmd + shift + ctrl - left: yabai -m window --space prev 
 
 # move window to next space
-cmd + shift + ctrl - right: yabai -m window --space next && \
-yabai -m window --focus $(yabai -m query --windows --window | jq -re ".id")
+cmd + shift + ctrl - right: yabai -m window --space next 
