@@ -44,6 +44,7 @@ yabai -m rule --add app="^Path Finder$" manage=off
 yabai -m rule --add app="^Spotify$" manage=off
 yabai -m rule --add app="^console$" manage=off
 yabai -m rule --add app="^Logi Options$" manage=off
+yabai -m rule --add app="^CleanMyMac X$" manage=off
 
 ## Change how yabai looks
 yabai -m config layout bsp
