@@ -105,6 +105,12 @@
 #    "qutebrowser"
 # ]
 
+##############################
+# APPLICATION                #
+# RELATED                    #
+# SHORTCUTS                  #
+##############################
+
 # Browsers
 ctrl + cmd - b : open /Applications/Firefox.app 
 ctrl + cmd - c : open /Applications/Google\ Chrome.app
