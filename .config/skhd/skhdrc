@@ -147,6 +147,7 @@ ctrl + alt + cmd - r : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
 
 ## Close active application
 hyper - backspace : $(yabai -m window $(yabai -m query --windows --window | jq -re ".id") --close)
+cmd + shift - q : $(yabai -m window $(yabai -m query --windows --window | jq -re ".id") --close)
 
 ## swap window
 shift + alt - h : yabai -m window --swap west
@@ -192,7 +193,7 @@ yabai -m window --grid 4:4:1:1:2:2 ## toggle sticky alt - s : yabai -m window --
 #alt - e : yabai -m window --toggle split
 
 ## toggle window border
-#shift + alt - b : yabai -m window --toggle border
+shift + alt - b : yabai -m window --toggle border
 
 ## create desktop, move window and follow focus
 shift + cmd - n :  yabai -m space --create \
