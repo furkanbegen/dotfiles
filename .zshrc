@@ -106,6 +106,7 @@ export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOBIN
 DEFAULT_USER=$(whoami)
 export LC_ALL=en_US.UTF-8
+export GPG_TTY=`tty`
 
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
