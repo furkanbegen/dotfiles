@@ -133,6 +133,7 @@ cmd + shift - i : idea
 ctrl + cmd - v : open /Applications/Visual\ Studio\ Code.app
 shift + alt - d : open /Applications/DataGrip.app
 ctrl + cmd - p : open /Applications/Postman.app
+cmd + shift - r : open /Applications/Robo\ 3T.app
 
 # Other
 ctrl + cmd - return : open /Applications/Alacritty.app
