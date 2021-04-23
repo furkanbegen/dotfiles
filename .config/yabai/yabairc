@@ -12,28 +12,45 @@ sudo yabai --load-sa
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 
 # global settings
-yabai -m config mouse_follows_focus          off
+yabai -m config mouse_follows_focus          on
 yabai -m config focus_follows_mouse          off
 yabai -m config window_placement             second_child
-yabai -m config window_topmost               off
+yabai -m config window_topmost               on
 yabai -m config window_shadow                on
-yabai -m config window_opacity               off
+yabai -m config window_opacity               on
 yabai -m config window_opacity_duration      0.0
 yabai -m config active_window_opacity        1.0
-yabai -m config normal_window_opacity        0.90
+yabai -m config normal_window_opacity        0.95
 yabai -m config window_border                on
 yabai -m config window_border_width          4
 yabai -m config active_window_border_color   0xff40FF00
 yabai -m config normal_window_border_color   0x00FFFFFF
 yabai -m config insert_feedback_color        0xffd75f5f
 yabai -m config split_ratio                  0.50
-yabai -m config auto_balance                 off
+yabai -m config auto_balance                 on
 yabai -m config mouse_modifier               ctrl
 yabai -m config mouse_action1                move
 yabai -m config mouse_action2                resize
 yabai -m config mouse_drop_action            swap
 
+# mission-control desktop labels
+yabai -m space 1 --label web
+yabai -m space 2 --label code
+yabai -m space 3 --label mail
+yabai -m space 4 --label message
+
+#yabai -m config --space code  layout        stack
+
 # float system preferences. Most of these just diable Yabai form resizing them.
+yabai -m rule --add app="^Firefox$" space=web
+yabai -m rule --add app="^Google Chrome$" space=web
+yabai -m rule --add app="^Safari$" space=web
+yabai -m rule --add app="^idea$" space=code
+yabai -m rule --add app="^Microsoft Outlook$" space=mail
+yabai -m rule --add app="^Slack$" space=message
+yabai -m rule --add app="^Discord$" space=message
+yabai -m rule --add app="^Telegram$" space=message
+yabai -m rule --add app="^WhatsApp$" space=message
 yabai -m rule --add app="^System Preferences$" sticky=on layer=above manage=off
 yabai -m rule --add app="^Finder$" sticky=on layer=above manage=off
 yabai -m rule --add app="^Alfred Preferences$" sticky=on layer=above manage=off
@@ -53,6 +70,8 @@ yabai -m config bottom_padding 5
 yabai -m config left_padding 5
 yabai -m config right_padding 5
 yabai -m config window_gap 10
+
+yabai -m signal --add event=window_destroyed active=yes action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse &> /dev/null || yabai -m window --focus \$(yabai -m query --windows --space | jq .[0].id) &> /dev/null"
 
 echo "yabai configuration loaded.."
 
