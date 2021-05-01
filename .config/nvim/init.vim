@@ -225,5 +225,11 @@ require'nvim-treesitter.configs'.setup {
   highlight = {
     enable = true,              -- false will disable the whole extension
     disable = { "c", "rust" },  -- list of language that will be disabled
-  },
+  }
 }
+
+require('telescope').setup{ 
+  defaults = { 
+    file_ignore_patterns = {"node_modules"} 
+    } 
+  }
