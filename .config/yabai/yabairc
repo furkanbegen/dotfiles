@@ -71,10 +71,10 @@ yabai -m rule --add app="^Logi Options$" manage=off
 
 ## Change how yabai looks
 yabai -m config layout bsp
-yabai -m config top_padding 5
-yabai -m config bottom_padding 5
-yabai -m config left_padding 5
-yabai -m config right_padding 5
+yabai -m config top_padding 20
+yabai -m config bottom_padding 20
+yabai -m config left_padding 20
+yabai -m config right_padding 20
 yabai -m config window_gap 10
 
 yabai -m signal --add event=window_destroyed active=yes action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse &> /dev/null || yabai -m window --focus \$(yabai -m query --windows --space | jq .[0].id) &> /dev/null"
