@@ -167,7 +167,7 @@ exec --no-startup-id teams-for-linux
 
 # Open applications on specific workspaces
 assign [title="Mozilla Firefox"] $ws1
-assign [class="Intellij IDEA"] $ws2
+assign [title="Intellij IDEA"] $ws2
 assign [class="Thunderbird"] $ws3
 assign [class="Slack"] $ws4
 assign [id="0x4a00005"] $ws4
@@ -181,6 +181,7 @@ for_window [title="Volume Control"] floating enable border pixel 1
 for_window [title="JetBrains Toolbox"] floating enable border pixel 1
 for_window [title="Spotify Premium"] floating enable border pixel 1
 for_window [class="Nitrogen"] floating enable sticky enable border normal
+for_window [title="Bluetooth Devices"] floating enable border pixel 1
 
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
