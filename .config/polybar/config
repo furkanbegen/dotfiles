@@ -1,4 +1,4 @@
-;==========================================================
+;==========================================================p4s0
 ;
 ;
 ;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
@@ -22,6 +22,8 @@ background-alt = #444
 ;foreground = ${xrdb:color7:#222}
 foreground = #dfdfdf
 foreground-alt = #d79921
+foreground-red = #cc241d
+foreground-green = #98971a
 primary = #ffb52a
 secondary = #cc241d
 alert = #bd2c40
@@ -51,16 +53,16 @@ padding-right = 2
 module-margin-left = 1
 module-margin-right = 2
 
-font-0 = fixed:pixelsize=18;1
-font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-font-2 = siji:pixelsize=10;1
-font-3 = "Font Awesome 5 Free:style=Regular:pixelsize=18;1"
-font-4 = "Font Awesome 5 Free:style=Solid:pixelsize=18;1"
-font-5 = "Font Awesome 5 Brands:pixelsize=18;1"
+font-0 = fixed:pixelsize=14;1
+font-1 = unifont:fontformat=truetype:size=14:antialias=false;0
+font-2 = siji:pixelsize=14;1
+font-3 = "Font Awesome 5 Free:style=Regular:pixelsize=14;1"
+font-4 = "Font Awesome 5 Free:style=Solid:pixelsize=14;1"
+font-5 = "Font Awesome 5 Brands:pixelsize=14;1"
 
 modules-left = i3
 modules-center = spotify-prev spotify-play-pause spotify-next spotify pacman-updates blur-toggle
-modules-right = filesystem pulseaudio xkeyboard memory cpu wlan eth battery temperature date powermenu
+modules-right = filesystem pulseaudio xkeyboard memory cpu wlan wlan-up-speed wlan-down-speed eth eth-up-speed eth-down-speed battery temperature date powermenu
 
 tray-position = right
 tray-padding = 2
@@ -274,6 +276,25 @@ ramp-signal-3 = 
 ramp-signal-4 = 
 ramp-signal-foreground = ${colors.foreground-alt}
 
+[module/wlan-up-speed]
+type = internal/network
+interface = wlo1
+internal = 3.0
+label-connected = %upspeed:7%
+format-connected = <label-connected>
+format-connected-prefix = " "
+format-connected-foreground = ${colors.foreground-red}
+
+
+[module/wlan-down-speed]
+type = internal/network
+interface = wlo1
+internal = 3.0
+label-connected = %downspeed:7%
+format-connected = <label-connected>
+format-connected-prefix = " "
+format-connected-foreground = ${colors.foreground-green}
+
 [module/eth]
 type = internal/network
 interface = enp4s0
@@ -289,6 +310,25 @@ format-disconnected =
 ;format-disconnected-underline = ${self.format-connected-underline}
 ;label-disconnected = %ifname% disconnected
 ;label-disconnected-foreground = ${colors.foreground-alt}
+
+
+[module/eth-up-speed]
+type = internal/network
+interface = enp4s0
+internal = 3.0
+label-connected = %upspeed:7%
+format-connected = <label-connected>
+format-connected-prefix = " "
+format-connected-foreground = ${colors.foreground-red}
+
+[module/eth-down-speed]
+type = internal/network
+interface = enp4s0
+internal = 3.0
+label-connected = %downspeed:7%
+format-connected = <label-connected>
+format-connected-prefix = " "
+format-connected-foreground = ${colors.foreground-green}
 
 [module/date]
 type = internal/date
