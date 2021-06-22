@@ -1,0 +1,38 @@
+
+#!/bin/sh
+
+B='#28282828'  # blank
+C='#ffffff22'  # clear ish
+D='#d79921'  # default
+T='#d79921'  # text
+W='#cc241d'  # wrong
+V='#fabd2f'  # verifying
+
+i3lock \
+--insidever-color=$C   \
+--ringver-color=$V     \
+\
+--insidewrong-color=$C \
+--ringwrong-color=$W   \
+\
+--inside-color=$B      \
+--ring-color=$D        \
+--line-color=$B        \
+--separator-color=$D   \
+\
+--verif-color=$T        \
+--wrong-color=$T        \
+--time-color=$T        \
+--date-color=$T        \
+--layout-color=$T      \
+--keyhl-color=$W       \
+--bshl-color=$W        \
+\
+--color 282828      \
+--clock               \
+--indicator           \
+--greeter-text="Screen is locked" \
+--greeter-color d79921 \
+--time-str="%H:%M:%S"  \
+--date-str='%d, %m %Y' \
+--keylayout 1         \
