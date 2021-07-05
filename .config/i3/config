@@ -161,7 +161,6 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 bindsym $mod+F2 exec firefox
 bindsym $mod+Shift+F2 exec jetbrains-toolbox
 bindsym $mod+Shift+p exec postman
-bindsym $alt+Shift+m exec thunderbird
 bindsym $mod+Shift+m exec --no-startup-id spotify
 
 # Make the currently focused window a scratchpad
