@@ -10,6 +10,7 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
+set $alt Mod1
 
 # Hide titlebar
 new_window pixel 5
@@ -67,7 +68,7 @@ bindsym $mod+d exec --no-startup-id dmenu_run
 # .desktop file. It is a wrapper around dmenu, so you need that installed.
 # bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
 
-#focus_follows_mouse no
+focus_follows_mouse no
 
 # change focus
 bindsym $mod+h focus left
@@ -105,7 +106,7 @@ bindsym $mod+f fullscreen toggle
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+bindsym $mod+e layout toggle all
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -157,29 +158,48 @@ bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
 # Application shortcuts
-bindsym $mod+Shift+F2 exec jetbrains-toolbox
 bindsym $mod+F2 exec firefox
+bindsym $mod+Shift+F2 exec jetbrains-toolbox
+bindsym $mod+Shift+p exec postman
+bindsym $alt+Shift+m exec thunderbird
+bindsym $mod+Shift+m exec --no-startup-id spotify
+
+# Make the currently focused window a scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# Show the first scratchpad window
+bindsym $mod+minus scratchpad show
+
+# Change keyboard layout
+bindsym $alt+Shift+l exec xkb-switch -n
+
+# scrot & gimp - select window or rectangle
+bindsym Print --release exec $HOME/.scripts/ss.sh
 
 # Start applications on i3 startup
 exec --no-startup-id thunderbird
 exec --no-startup-id slack
 exec --no-startup-id teams-for-linux
+exec --no-startup-id discord
+exec --no-startup-id blueman-applet
+exec --no-startup-id rescuetime
+
 
 # Open applications on specific workspaces
 assign [title="Mozilla Firefox"] $ws1
 assign [title="Intellij IDEA"] $ws2
-assign [class="Thunderbird"] $ws3
-assign [class="Slack"] $ws4
-assign [id="0x4a00005"] $ws4
+assign [class="Slack"] $ws3
+for_window [title="^Microsoft Teams"] move container to workspace 3
+assign [title="Discord"] $ws4
+assign [title="Zoom"] $ws3
+assign [class="Thunderbird"] $ws4
 assign [title="Robo 3T"] $ws6
-assign [title="Zoom"] $ws4
 
-for_window [title="^Microsoft Teams"] move container to workspace 4
 
 # Open specific applications in floating mode
 for_window [title="Volume Control"] floating enable border pixel 1
 for_window [title="JetBrains Toolbox"] floating enable border pixel 1
-for_window [title="Spotify Premium"] floating enable border pixel 1
+for_window [title="Spotify Premium"] floating enable border pixel 1 move container to workspace 5
 for_window [class="Nitrogen"] floating enable sticky enable border normal
 for_window [title="Bluetooth Devices"] floating enable border pixel 1
 
