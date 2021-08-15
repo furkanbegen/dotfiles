@@ -344,7 +344,7 @@ format-connected-foreground = ${colors.foreground-green}
 type = internal/date
 interval = 5
 
-date =
+date = " %d-%m-%Y"
 date-alt = " %d-%m-%Y"
 
 time = %H:%M
