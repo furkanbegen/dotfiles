@@ -62,7 +62,7 @@ font-5 = "Font Awesome 5 Brands:pixelsize=10;1"
 
 modules-left = i3
 modules-center = spotify-prev spotify-play-pause spotify-next spotify pacman-updates blur-toggle
-modules-right = filesystem pulseaudio xkeyboard memory2 cpu wlan wlan-up-speed wlan-down-speed eth eth-up-speed eth-down-speed battery temperature2 date powermenu
+modules-right = filesystem pulseaudio xkeyboard memory2 battery temperature2 date powermenu
 
 tray-position = right
 tray-padding = 2
@@ -359,7 +359,7 @@ label = %date% %time%
 [module/pulseaudio]
 type = internal/pulseaudio
 
-format-volume = <ramp-volume> <label-volume> <bar-volume>
+format-volume = <ramp-volume> <label-volume>
 label-volume = %percentage%%
 label-volume-foreground = ${colors.foreground-alt}
 
