@@ -16,17 +16,18 @@
 ;
 ;==========================================================
 [colors]
-;background = ${xrdb:color0:#222}
-background = #222
-background-alt = #444
-;foreground = ${xrdb:color7:#222}
-foreground = #dfdfdf
-foreground-alt = #d79921
-foreground-red = #cc241d
-foreground-green = #98971a
-primary = #ffb52a
-secondary = #cc241d
-alert = #bd2c40
+background = #2e3440
+buffer = #4c566a
+foreground = #D8DEE9
+nord6 = #ECEFF4
+nord7 = #8FBCBB
+nord8 = #88C0D0
+nord9 = #81A1C1
+urgent = #BF616A
+warning = #D08770
+notify = #EBCB8B
+success = #A3BE8C
+function = #B48EAD
 
 [bar/top]
 enable-ipc = true
@@ -54,15 +55,15 @@ module-margin-left = 1
 module-margin-right = 2
 
 font-0 = fixed:pixelsize=10;1
-font-1 = unifont:fontformat=truetype:size=10:antialias=false;0
-font-2 = siji:pixelsize=10;1
-font-3 = "Font Awesome 5 Free:style=Regular:pixelsize=10;1"
+font-1 = FontAwesome5FreeSolid:pixelsize=10;1
+font-2 = FontAwesome5Brands:pixelsize=8;1
 font-4 = "Font Awesome 5 Free:style=Solid:pixelsize=10;1"
 font-5 = "Font Awesome 5 Brands:pixelsize=10;1"
 
 modules-left = i3
 modules-center = spotify-prev spotify-play-pause spotify-next spotify pacman-updates blur-toggle
-modules-right = filesystem pulseaudio xkeyboard memory2 battery temperature2 date powermenu
+modules-right = filesystem pulseaudio xkeyboard memory2 temperature2 battery date powermenu
+
 
 tray-position = right
 tray-padding = 2
@@ -88,7 +89,7 @@ hook-0 = echo 
 hook-1 = echo 
 click-left = ~/.config/polybar/scripts/blurtoggle.sh
 initial = 1
-format-foreground = ${colors.foreground-alt}
+format-foreground = ${colors.notify}
 
 [module/spotify]
 type = custom/script
@@ -122,7 +123,7 @@ type = custom/script
 exec = checkupdates | wc -l
 interval = 1000
 label = Updates: %output%
-format-foreground = ${colors.foreground-alt}
+format-foreground = ${colors.warning}
 format-prefix = " "
 format-prefix-foreground = #cc241d
 
@@ -135,16 +136,17 @@ type = internal/xkeyboard
 blacklist-0 = num lock
 
 format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-format-prefix-underline = ${colors.secondary}
+format-prefix-foreground = ${colors.warning}
+format-prefix-underline = ${colors.warning}
 
 label-layout = %layout%
-label-layout-underline = ${colors.secondary}
+label-layout-foreground = ${colors.warning}
+label-layout-underline = ${colors.warning}
 
 label-indicator-padding = 2
 label-indicator-margin = 1
-label-indicator-background = ${colors.secondary}
-label-indicator-underline = ${colors.secondary}
+label-indicator-background = ${colors.urgent}
+label-indicator-underline = ${colors.warning}
 
 [module/filesystem]
 type = internal/fs
@@ -152,16 +154,16 @@ interval = 25
 
 mount-0 = /
 
-label-mounted = %{F#d79921}   %percentage_used%%
-label-unmounted = %{F#d79921}  %mountpoint% not mounted
-label-unmounted-foreground = ${colors.foreground-alt}
+label-mounted = %{F#ECEFF4}   %percentage_used%%
+label-mounted-underline = ${colors.nord6}
+label-unmounted = %{F#ECEFF4}  %mountpoint% not mounted
+label-unmounted-foreground = ${colors.nord6}
 
 [module/i3]
 type = internal/i3
 format = <label-state> <label-mode> 
 index-sort = true
 wrapping-scroll = false
-
 ; Only show workspaces on the same output as the bar
 ;pin-workspaces = true
 
@@ -179,12 +181,13 @@ label-mode-background = ${colors.primary}
 
 ; focused = Active workspace on focused monitor
 label-focused = %icon%
-label-focused-background = ${colors.background-alt}
-label-focused-underline= ${colors.primary}
+label-focused-background = ${colors.nord7}
+label-focused-underline= ${colors.nord7}
 label-focused-padding = 2
 
 ; unfocused = Inactive workspace on any monitor
 label-unfocused = %icon%
+label-unfocused-foreground= ${colors.nord9}
 label-unfocused-padding = 2
 
 ; visible = Active workspace on unfocused monitor
@@ -195,11 +198,13 @@ label-visible-padding = ${self.label-focused-padding}
 
 ; urgent = Workspace with urgency hint set
 label-urgent = %icon%
-label-urgent-background = ${colors.alert}
+label-urgent-background = ${colors.urgent}
+label-urgent-foreground = ${colors.foreground}
 label-urgent-padding = 2
 
 ; Separator in between workspaces
 ; label-separator = |
+; label-separator-foreground = ${colors.foreground}
 
 
 [module/mpd]
@@ -249,8 +254,9 @@ label = %percentage:2%%
 type = custom/script
 internal = 2
 format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #4bffdc
+format-prefix-foreground = ${colors.success}
+format-underline = ${colors.success} 
+format-foreground = ${colors.success}
 exec = free -h | awk '/^Mem/ {print $3 "/" $2}'
 click-left = notify-send --app-name="Biggest Memory Usage" --urgency=critical "$(ps axch -o cmd:15,%mem --sort=-%mem | head)"
 
@@ -293,7 +299,6 @@ format-connected = <label-connected>
 format-connected-prefix = " "
 format-connected-foreground = ${colors.foreground-red}
 
-
 [module/wlan-down-speed]
 type = internal/network
 interface = wlo1
@@ -302,8 +307,6 @@ label-connected = %downspeed:7%
 format-connected = <label-connected>
 format-connected-prefix = " "
 format-connected-foreground = ${colors.foreground-green}
-
-
 
 [module/eth]
 type = internal/network
@@ -343,50 +346,34 @@ format-connected-foreground = ${colors.foreground-green}
 [module/date]
 type = internal/date
 interval = 5
-
 date = " %d-%m-%Y"
 date-alt = " %d-%m-%Y"
-
 time = %H:%M
 time-alt = %H:%M:%S
-
 format-prefix = 
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #0a6cf5
-
+format-prefix-foreground = ${colors.nord8}
+format-foreground = ${colors.nord8}
+format-underline = ${colors.nord8}
 label = %date% %time%
+label-margin = 1
 
 [module/pulseaudio]
 type = internal/pulseaudio
 
 format-volume = <ramp-volume> <label-volume>
 label-volume = %percentage%%
-label-volume-foreground = ${colors.foreground-alt}
+label-volume-foreground = ${colors.function}
+label-volume-underline= ${colors.function}
 
 label-muted =   muted
-label-muted-foreground = ${colors.foreground-alt}
-
-bar-volume-width = 10
-bar-volume-foreground-0 = #98971a
-bar-volume-foreground-1 = #98971a
-bar-volume-foreground-2 = #98971a
-bar-volume-foreground-3 = #98971a
-bar-volume-foreground-4 = #98971a
-bar-volume-foreground-5 = #cc241d
-bar-volume-foreground-6 = #cc241d
-bar-volume-gradient = false
-bar-volume-indicator = |
-bar-volume-indicator-font = 3
-bar-volume-fill = ─
-bar-volume-fill-font = 1
-bar-volume-empty = ─
-bar-volume-empty-font = 
-bar-volume-empty-foreground = ${colors.foreground-alt}
+label-muted-foreground = ${colors.function}
+label-muted-underline= ${colors.function}
 
 ; Only applies if <ramp-volume> is used
-ramp-volume-0 = %{F#d79921}
-ramp-volume-1 = %{F#d79921}
-ramp-volume-2 = %{F#d79921}
+ramp-volume-0 = %{F#B48EAD}
+ramp-volume-1 = %{F#B48EAD}
+ramp-volume-2 = %{F#B48EAD}
+ramp-volume-underline = ${colors.function}
 
 ; Right and Middle click
 click-right = pavucontrol
@@ -398,34 +385,36 @@ adapter = AC0
 full-at = 100
 
 format-charging = <animation-charging> <label-charging>
-format-charging-underline = #ffb52a
+format-charging-underline = ${colors.success} 
+label-charging-foreground = ${colors.success}
 
 format-discharging = <animation-discharging> <label-discharging>
 format-discharging-underline = ${self.format-charging-underline}
 
 format-full-prefix = " "
-format-full-prefix-foreground = ${colors.foreground-alt}
+format-full-prefix-foreground = ${colors.success}
 format-full-underline = ${self.format-charging-underline}
-
+format-full-foreground = ${colors.success}
 
 animation-charging-0 = 
 animation-charging-1 = 
 animation-charging-2 = 
-animation-charging-foreground = ${colors.foreground-alt}
+animation-charging-foreground = ${colors.urgent}
 animation-charging-framerate = 750
 
 animation-discharging-0 = 
 animation-discharging-1 = 
 animation-discharging-2 = 
-animation-discharging-foreground = ${colors.foreground-alt}
+animation-discharging-foreground = ${colors.urgent}
 animation-discharging-framerate = 750
 
 [module/temperature2]
 type = custom/script
 internal = 2
 format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #4bffdc
+format-prefix-foreground = ${colors.urgent}
+format-underline = ${colors.urgent}
+format-foreground = ${colors.urgent}
 click-left = notify-send --app-name="Biggest CPU Usage" --urgency=critical "$(ps axch -o cmd:15,%cpu --sort=-%cpu | head)"
 exec = sensors | awk '/^Core 0/ {print $3}'
 
