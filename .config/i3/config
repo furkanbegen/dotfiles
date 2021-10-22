@@ -162,6 +162,7 @@ bindsym $mod+F2 exec firefox
 bindsym $mod+Shift+F2 exec jetbrains-toolbox
 bindsym $mod+Shift+p exec postman
 bindsym $mod+Shift+m exec --no-startup-id spotify
+bindsym $alt+space exec pcmanfm
 
 # Make the currently focused window a scratchpad
 bindsym $mod+Shift+minus move scratchpad
