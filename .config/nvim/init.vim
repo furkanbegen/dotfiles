@@ -6,13 +6,16 @@ call plug#begin('~/.vim/plugged')
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
     Plug 'tpope/vim-fugitive'
-    Plug 'morhetz/gruvbox'
     Plug 'frazrepo/vim-rainbow'
     Plug 'nvim-lua/popup.nvim'
     Plug 'nvim-lua/plenary.nvim'
     Plug 'nvim-telescope/telescope.nvim'
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
     Plug 'nvim-treesitter/playground'
+
+" Themes
+    Plug 'morhetz:gruvbox'
+    Plug 'shaunsingh/nord.nvim'
 call plug#end()
 
 set nocompatible
@@ -51,7 +54,9 @@ set updatetime=300
 " don't give |ins-completion-menu| messages.
 set shortmess+=c
 
-colorscheme gruvbox
+colorscheme nord
+let g:nord_contrast = v:true
+let g:nord_borders = v:true
 let g:go_def_mapping_enabled = 0
 let g:go_highlight_build_constraints = 1
 let g:go_highlight_extra_types = 1
