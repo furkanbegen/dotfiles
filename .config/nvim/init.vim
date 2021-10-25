@@ -19,7 +19,8 @@ call plug#begin('~/.vim/plugged')
     Plug 'hrsh7th/nvim-cmp'
 
 " Themes
-    Plug 'shaunsingh/nord.nvim'
+ "   Plug 'shaunsingh/nord.nvim'
+  Plug 'arcticicestudio/nord-vim'
 
 " Version Control
     Plug 'nvim-lua/plenary.nvim'
