@@ -152,7 +152,7 @@ icon_position = off
 max_icon_size = 80
 
 # Paths to default icons.
-icon_path = ~/.icons/Gruvbox-Material-Dark/16x16/mimetypes/:~/.icons/Gruvbox-Material-Dark/48x48/status:~/.icons/Gruvbox-Material-Dark/16x16/devices/:~/.icons/Gruvbox-Material-Dark/48x48/emblems
+icon_path = /home/furkan/.icons/Gruvbox-Material-Dark/16x16/mimetypes/:/home/furkan/.icons/Gruvbox-Material-Dark/48x48/status:/home/furkan/.icons/Gruvbox-Material-Dark/48x48/devices/:/home/furkan/.icons/Gruvbox-Material-Dark/48x48/emblems:/home/furkan/.icons/Gruvbox-Material-Dark/48x48/apps:/home/furkan/.icons/Gruvbox-Material-Dark/48x48/categories
 
 frame_width = 3
 frame_color = "#8EC07C"
