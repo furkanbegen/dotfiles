@@ -152,6 +152,11 @@ require('telescope').setup{
         file_previewer = require("telescope.previewers").vim_buffer_cat.new,
         grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
         qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,       
+
+        layout_strategy = 'flex',
+        layout_config = {
+          preview_cutoff = 1,
+          },
         },
     extensions = {
         fzf = {
