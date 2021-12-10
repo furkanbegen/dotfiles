@@ -6,18 +6,26 @@ call plug#begin('~/.vim/plugged')
     Plug 'frazrepo/vim-rainbow'
     Plug 'nvim-lua/popup.nvim'
     Plug 'nvim-lua/plenary.nvim'
+    Plug 'kyazdani42/nvim-web-devicons'
     Plug 'nvim-telescope/telescope.nvim'
     Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
     Plug 'nvim-treesitter/playground'
     Plug 'edkolev/tmuxline.vim'
+    Plug 'mfussenegger/nvim-jdtls'
+    Plug 'akinsho/flutter-tools.nvim'
 
 " LSP
     Plug 'neovim/nvim-lspconfig'
     Plug 'hrsh7th/cmp-nvim-lsp'
     Plug 'hrsh7th/cmp-buffer'
+    Plug 'hrsh7th/cmp-path'
+    Plug 'hrsh7th/cmp-cmdline'
     Plug 'hrsh7th/nvim-cmp'
 
+" For vsnip users.
+    Plug 'hrsh7th/cmp-vsnip'
+    Plug 'hrsh7th/vim-vsnip'
 " Themes
  "   Plug 'shaunsingh/nord.nvim'
   Plug 'arcticicestudio/nord-vim'
@@ -89,7 +97,6 @@ let g:go_auto_sameids = 1
 let g:go_metalinter_autosave = 1
 let g:go_metalinter_autosave_enabled = ['vet', 'golint']
 let rainbow_active = 1
-
 map <C-n> :NERDTreeToggle<CR>
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
@@ -120,11 +127,12 @@ nnoremap <leader>fgg <cmd>lua require('telescope.builtin').git_files()<cr>
 nnoremap <leader>ps <cmd>lua require('telescope.builtin').grep_string()<cr>
 nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
 nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
+nnoremap <leader>fl <cmd>lua require('telescope').extensions.flutter.commands()<cr>
 
 
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = { "go", "java", "html", "css", "javascript", "php", "json" }, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+ensure_installed = { "go", "java", "html", "css", "javascript", "php", "json", "dart"}, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
   highlight = {
     enable = true,              -- false will disable the whole extension
     disable = { "c", "rust" },  -- list of language that will be disabled
@@ -136,11 +144,18 @@ require'nvim-treesitter.configs'.setup {
 
 require('telescope').setup{ 
     defaults = { 
-        file_ignore_patterns = {"node_modules"} 
+        file_ignore_patterns = {"node_modules"},
+        file_sorter = require("telescope.sorters").get_fzf_sorter,
+        prompt_prefix = " >",
+        color_devicons = true,
+
+        file_previewer = require("telescope.previewers").vim_buffer_cat.new,
+        grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
+        qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,       
         },
     extensions = {
         fzf = {
-            fuzzt = true,
+            fuzzy = true,
             override_generic_sorter = true,
             override_file_sorter = true,
             case_mode = "smart_case"
@@ -149,7 +164,7 @@ require('telescope').setup{
     
   }
 
-require('telescope').load_extension('fzf')
+require('telescope').load_extension('fzf', 'flutter')
 
 require('lualine').setup{
     options = {
@@ -159,14 +174,7 @@ require('lualine').setup{
             }
     }
 
-require('gitsigns').setup{
-    keymaps ={
-            ['<leader>hb'] = '<cmd>lua require"gitsigns".blame_line(true)<CR>',
-            [']c'] = { expr = true, "&diff ? ']c': '<cmd>lua require\"gitsigns.actions\".next_hunk()<CR>'"},
-            ['[c'] = { expr = true, "&diff ? '[c' : '<cmd>lua require\"gitsigns.actions\".prev_hunk()<CR>'"},
-    }
-
-}
+require('gitsigns').setup{}
 
   -- Setup nvim-cmp.
   local cmp = require'cmp'
@@ -201,8 +209,14 @@ require('gitsigns').setup{
 
   -- Setup lspconfig.
   local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+  capabilities.textDocument.completion.completionItem.snippetSupport = true;
   require('lspconfig').gopls.setup{} 
   require('lspconfig').java_language_server.setup{} 
   require('lspconfig').dockerls.setup{} 
   require('lspconfig').yamlls.setup{} 
+  require("flutter-tools").setup{
+    lsp = {
+      capabilities = capabilities,
+      }
+  }
 EOF
