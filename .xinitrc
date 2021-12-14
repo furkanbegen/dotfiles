@@ -64,5 +64,6 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
 fi
 
 nitrogen --random ~/wallpapers --set-scaled
-picom & rescuetime &
+udiskie --tray &
+rescuetime &
 exec i3
