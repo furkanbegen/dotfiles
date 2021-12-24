@@ -62,7 +62,7 @@ font-5 = "Font Awesome 5 Brands:pixelsize=10;1"
 
 modules-left = i3
 modules-center = spotify-prev spotify-play-pause spotify-next spotify pacman-updates blur-toggle
-modules-right = filesystem pulseaudio xkeyboard memory2 temperature2 battery date powermenu
+modules-right = currency filesystem pulseaudio xkeyboard memory2 temperature2 battery date powermenu
 
 
 tray-position = right
@@ -260,6 +260,13 @@ format-underline = ${colors.success}
 format-foreground = ${colors.success}
 exec = free -h | awk '/^Mem/ {print $3 "/" $2}'
 click-left = notify-send --app-name="Biggest Memory Usage" --urgency=critical "$(ps axch -o cmd:15,%mem --sort=-%mem | head)"
+
+[module/currency]
+type = custom/script
+internal = 10
+format-underline = ${colors.success}
+format-foreground = ${colors.nord6}
+exec = ~/dotfiles/scripts/currency.sh
 
 [module/memory]
 type = internal/memory
