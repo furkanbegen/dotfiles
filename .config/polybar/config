@@ -68,6 +68,7 @@ modules-right = binance filesystem pulseaudio xkeyboard memory2 temperature2 bat
 
 tray-position = right
 tray-padding = 10
+tray-maxsize = 1200
 ;tray-background = #0063ff
 
 ;wm-restack = bspwm
