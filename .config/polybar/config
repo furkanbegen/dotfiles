@@ -30,6 +30,7 @@ success = #A3BE8C
 function = #B48EAD
 
 [bar/top]
+dpi = 200
 enable-ipc = true
 monitor = ${env:MONITOR:HDMI-0}
 width = 100%
@@ -62,7 +63,7 @@ font-5 = "Font Awesome 5 Brands:pixelsize=10;1"
 
 modules-left = i3
 modules-center = spotify-prev spotify-play-pause spotify-next spotify pacman-updates blur-toggle
-modules-right = currency filesystem pulseaudio xkeyboard memory2 temperature2 battery date powermenu
+modules-right = binance filesystem pulseaudio xkeyboard memory2 temperature2 battery date powermenu
 
 
 tray-position = right
@@ -267,6 +268,13 @@ internal = 10
 format-underline = ${colors.success}
 format-foreground = ${colors.nord6}
 exec = ~/dotfiles/scripts/currency.sh
+
+[module/binance]
+type = custom/script
+internal = 10
+format-underline = ${colors.success}
+format-foreground = ${colors.nord6}
+exec = ~/dotfiles/scripts/binance.sh
 
 [module/memory]
 type = internal/memory
@@ -476,6 +484,7 @@ menu-2-1-exec = menu-open-0
 
 
 [bar/bottom]
+dpi = 120
 enable-ipc = true
 monitor = ${env:MONITOR:eDP-1-1}
 width = 100%
