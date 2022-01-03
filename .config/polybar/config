@@ -30,7 +30,7 @@ success = #A3BE8C
 function = #B48EAD
 
 [bar/top]
-dpi = 200
+dpi = 180
 enable-ipc = true
 monitor = ${env:MONITOR:HDMI-0}
 width = 100%
@@ -485,7 +485,7 @@ menu-2-1-exec = menu-open-0
 
 
 [bar/bottom]
-dpi = 120
+dpi = 150
 enable-ipc = true
 monitor = ${env:MONITOR:eDP-1-1}
 width = 100%
