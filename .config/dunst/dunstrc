@@ -218,7 +218,7 @@ timeout = 8
 
 [spotify]
     appname = Spotify
-    urgency = normal
+    format = ""
 
 [mail]
     appname = Mozilla Thunderbird
