@@ -223,4 +223,7 @@ require('gitsigns').setup{}
       capabilities = capabilities,
       }
   }
+  require('lspconfig').html.setup{
+  capabilities = capabilities,
+  }
 EOF
