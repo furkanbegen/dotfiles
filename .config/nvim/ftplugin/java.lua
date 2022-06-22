@@ -52,7 +52,7 @@ local config = {
     "-Declipse.product=org.eclipse.jdt.ls.core.product",
     "-Dlog.protocol=true",
     "-Dlog.level=ALL",
-    --"-javaagent:" .. home .. "/.local/share/nvim/lsp_servers/jdtls/lombok.jar",
+    "-javaagent:" .. home .. "/.local/share/nvim/lsp_servers/jdtls/lombok.jar",
     "-noverify",
     "-Xmx1G",
     "--add-modules=ALL-SYSTEM",
