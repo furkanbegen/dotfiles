@@ -142,15 +142,15 @@ set $ws9 "9"
 set $ws10 "10"
 
 
-workspace $ws1 output HDMI-0
-workspace $ws2 output HDMI-0
+workspace $ws1 output DP-0
+workspace $ws2 output DP-0
 workspace $ws3 output eDP-1-1
 workspace $ws4 output eDP-1-1
-workspace $ws5 output HDMI-0
-workspace $ws6 output HDMI-0
-workspace $ws7 output HDMI-0
-workspace $ws8 output HDMI-0
-workspace $ws9 output HDMI-0
+workspace $ws5 output DP-0
+workspace $ws6 output DP-0
+workspace $ws7 output DP-0
+workspace $ws8 output DP-0
+workspace $ws9 output DP-0
 workspace $ws10 output eDP-1-1
  
 
@@ -180,7 +180,7 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 
 
 #move worksaces between monitors
-bindsym $mod+Control+m move workspace to output HDMI-0
+bindsym $mod+Control+m move workspace to output DP-0
 bindsym $mod+Control+s move workspace to output eDP-1-1
 bindsym $mod+Control+k move workspace to output up
 bindsym $mod+Control+j move workspace to output down
@@ -208,9 +208,9 @@ bindsym Print --release exec $HOME/.scripts/ss.sh
 
 # Start applications on i3 startup
 exec --no-startup-id thunderbird
-exec --no-startup-id slack
-exec --no-startup-id teams-for-linux
-exec --no-startup-id discord
+#exec --no-startup-id slack
+#exec --no-startup-id teams-for-linux
+#exec --no-startup-id discord
 exec --no-startup-id blueman-applet
 exec --no-startup-id rescuetime
 
