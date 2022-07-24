@@ -7,7 +7,7 @@ intern=eDP-1-1
 extern=HDMI-0
 
 if xrandr | grep "$extern disconnected"; then
-	xrandr --output eDP-1-1 --primary --mode 2560x1440
+	xrandr --output eDP-1-1 --scale 0.80x0.80 --primary --mode 2560x1440
 else
   xrandr --output DP-0 --off --output DP-1 --off \
   --output HDMI-0 --primary --mode 3840x2160 --pos 0x0 --rotate normal \
@@ -64,5 +64,6 @@ fi
 
 nitrogen --random ~/wallpapers --set-scaled &
 udiskie --tray & 
+picom -b --experimental-backends --backend glx &
 rescuetime &
 exec i3

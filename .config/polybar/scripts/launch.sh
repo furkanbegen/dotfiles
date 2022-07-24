@@ -5,9 +5,14 @@ killall -q polybar
 # If all your bars have ipc enabled, you can also use 
 # polybar-msg cmd quit
 
-# Launch bar1 and bar2
-echo "---" | tee -a /tmp/polybar1.log /tmp/polybar2.log
-polybar top 2>&1 | tee -a /tmp/polybar1.log & disown
-polybar bottom 2>&1 | tee -a /tmp/polybar1.log & disown
+if type "xrandr"; then
+  for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do
+    MONITOR=$m polybar --reload top&
+    MONITOR=$m polybar --reload bottom&
+  done
+else
+  polybar --reload top&
+  polybar --reload bottom&
+fi
 
 echo "Bars launched..."

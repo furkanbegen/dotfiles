@@ -50,10 +50,10 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
-bindsym XF86MonBrightnessUp exec $HOME/dotfiles/scripts/brightness.sh eDP-1-1 + 
-bindsym XF86MonBrightnessDown exec $HOME/dotfiles/scripts/brightness.sh eDP-1-1 -
-bindsym $alt+XF86MonBrightnessUp exec $HOME/dotfiles/scripts/brightness.sh HDMI-0 + 
-bindsym $alt+XF86MonBrightnessDown exec $HOME/dotfiles/scripts/brightness.sh HDMI-0 -
+bindsym XF86MonBrightnessUp exec $HOME/dotfiles/scripts/brightness.sh + 
+bindsym XF86MonBrightnessDown exec $HOME/dotfiles/scripts/brightness.sh -
+bindsym $alt+XF86MonBrightnessUp exec $HOME/dotfiles/scripts/brightness.sh DP-0 + 
+bindsym $alt+XF86MonBrightnessDown exec $HOME/dotfiles/scripts/brightness.sh DP-0 -
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -213,6 +213,7 @@ exec --no-startup-id thunderbird
 #exec --no-startup-id discord
 exec --no-startup-id blueman-applet
 exec --no-startup-id rescuetime
+exec --no-startup-id telegram-desktop
 
 
 # Open applications on specific workspaces
@@ -221,6 +222,7 @@ assign [title="Intellij IDEA"] $ws2
 assign [class="Slack"] $ws3
 for_window [title="^Microsoft Teams"] move container to workspace 3
 assign [title="Discord"] $ws4
+assign [title="Telegram"] $ws4
 assign [title="Zoom"] $ws3
 assign [class="Thunderbird"] $ws4
 assign [title="Robo 3T"] $ws6

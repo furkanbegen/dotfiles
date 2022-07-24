@@ -489,4 +489,4 @@ key_bindings:
   - { key: Up,       mods: Alt,       chars: "\x06\x4b" }
   - { key: Right,    mods: Alt,       chars: "\x06\x4c" }
   - { key: Equals,    mods: Control,       action: IncreaseFontSize            }
-  - { key: Plus,      mods: Control,       action: IncreaseFontSize            }
+  - { key: Plus,      mods: Shift|Control,       action: DecreaseFontSize            }
