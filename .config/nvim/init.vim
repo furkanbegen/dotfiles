@@ -75,6 +75,7 @@ set updatetime=300
 set shortmess+=c
 
 colorscheme nord
+let NERDTreeShowHidden=1
 let g:airline_theme = 'nord_minimal'
 let g:nord_contrast = v:true
 let g:nord_borders = v:true
