@@ -5,14 +5,15 @@ killall -q polybar
 # If all your bars have ipc enabled, you can also use 
 # polybar-msg cmd quit
 
-if type "xrandr"; then
-  for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do
-    MONITOR=$m polybar --reload top&
-    MONITOR=$m polybar --reload bottom&
-  done
+intern=eDP-1-1
+extern=DP-0
+
+if xrandr | grep "$extern disconnected"; then
+  MONITOR=$intern polybar --reload top &
+  MONITOR=$intern polybar --reload bottom&
 else
-  polybar --reload top&
-  polybar --reload bottom&
+  MONITOR=$extern polybar --reload top &
+  MONITOR=$extern polybar --reload bottom&
 fi
 
 echo "Bars launched..."
