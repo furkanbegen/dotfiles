@@ -7,11 +7,10 @@ intern=eDP-1-1
 extern=HDMI-0
 
 if xrandr | grep "$extern disconnected"; then
-	xrandr --output eDP-1-1 --scale 0.80x0.80 --primary --mode 2560x1440
+	xrandr --output eDP-1-1 --scale 0.6x0.6 --primary --mode 2560x1440
 else
-  xrandr --output DP-0 --off --output DP-1 --off \
-  --output HDMI-0 --primary --mode 3840x2160 --pos 0x0 --rotate normal \
-  --output DP-2 --off --output eDP-1-1 --set "PRIME Synchronization" 1 --mode 2560x1440 --scale 1.2x1.2 --pos 3840x0 --rotate normal --below HDMI-0
+  sh ~/dotfiles/scripts/both.sh &
+  sh ~/dotfiles/scripts/bg.sh
 fi
 
 userresources=$HOME/.Xresources
