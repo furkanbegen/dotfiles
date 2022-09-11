@@ -14,6 +14,7 @@ if xrandr | grep "$extern disconnected"; then
 else
   MONITOR=$extern polybar --reload top &
   MONITOR=$extern polybar --reload bottom&
+  MONITOR=$intern polybar --reload secondary &
 fi
 
 echo "Bars launched..."
