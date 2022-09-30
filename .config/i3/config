@@ -13,8 +13,9 @@ set $mod Mod4
 set $alt Mod1
 
 # Hide titlebar
-new_window pixel 5
-new_float normal
+default_border pixel 1
+default_floating_border normal
+for_window [class="^.*"] border pixel 1
 
 # Set inner/outer gaps
 gaps inner 20
@@ -184,6 +185,8 @@ bindsym $mod+Control+m move workspace to output DP-0
 bindsym $mod+Control+s move workspace to output eDP-1-1
 bindsym $mod+Control+k move workspace to output up
 bindsym $mod+Control+j move workspace to output down
+bindsym $mod+Control+Left move workspace to output left
+bindsym $mod+Control+Right move workspace to output right
 
 
 # Application shortcuts
@@ -224,9 +227,8 @@ for_window [title="^Microsoft Teams"] move container to workspace 3
 assign [title="Discord"] $ws4
 assign [title="Telegram"] $ws4
 assign [title="Zoom"] $ws3
-assign [class="Thunderbird"] $ws4
+assign [class="thunderbird"] $ws4
 assign [title="Robo 3T"] $ws6
-
 
 # Open specific applications in floating mode
 for_window [title="Volume Control"] floating enable border pixel 1
@@ -234,6 +236,7 @@ for_window [title="JetBrains Toolbox"] floating enable border pixel 1
 for_window [title="Spotify Premium"] floating enable border pixel 1 move container to workspace 5
 for_window [class="Nitrogen"] floating enable sticky enable border normal
 for_window [title="Bluetooth Devices"] floating enable border pixel 1
+for_window [class="Toggl Desktop"] floating enable border pixel 1
 #for_window [title="Android Emulator"] floating enable border pixel 1
 
 # switch to workspace with urgent window automatically
