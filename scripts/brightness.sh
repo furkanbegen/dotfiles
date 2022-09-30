@@ -10,9 +10,10 @@ case $1 in
         ;;
 esac
 
-#TODO improve for max and min values
-echo $val >  /sys/class/backlight/intel_backlight/brightness
+#TODO consider negative value for min brightness 
+variable=$(( $val > $maxBr ? $maxBr : $val ))
+echo $variable >  /sys/class/backlight/intel_backlight/brightness
 
 notify-send -h string:x-canonical-private-synchronous:anything \
             -t 1000 \
-            " Screen Brightness: $val" 
+            " Screen Brightness: $variable" 
