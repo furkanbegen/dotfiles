@@ -1,0 +1,127 @@
+import = [
+  "/home/furkan/.config/alacritty/tokyo-night.toml"
+]
+
+[env]
+TERM="alacritty-direct"
+
+[window]
+opacity = 1.0
+decorations = "full"
+
+[window.dimensions]
+columns = 140
+lines = 38
+
+[window.padding]
+x = 5
+y = 5
+
+[font]
+size = 14
+
+[font.bold]
+family = "Hack Nerd Font Mono"
+style = "Bold"
+
+[font.glyph_offset]
+x = 0
+y = 0
+
+[font.italic]
+family = "Hack Nerd Font Mono"
+style = "Italic"
+
+[font.normal]
+family = "Hack Nerd Font Mono"
+style = "Regular"
+
+[font.offset]
+x = 0
+y = 0
+
+[bell]
+animation = "EaseOutExpo"
+duration = 0
+
+[selection]
+semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"
+
+[cursor]
+style = "Block"
+unfocused_hollow = false
+
+[[keyboard.bindings]]
+action = "SpawnNewInstance"
+key = "N"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
+chars = "\u0006v"
+key = "D"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u0006s"
+key = "D"
+mods = "Alt|Shift"
+
+[[keyboard.bindings]]
+chars = "\u0006x"
+key = "W"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u0006h"
+key = "H"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u0006j"
+key = "J"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u0006k"
+key = "K"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u0006l"
+key = "L"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u0006c"
+key = "T"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u0006H"
+key = "Left"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u0006J"
+key = "Down"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u0006K"
+key = "Up"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u0006L"
+key = "Right"
+mods = "Alt"
+
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "Equals"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "DecreaseFontSize"
+key = "Plus"
+mods = "Shift|Control"
