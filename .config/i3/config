@@ -45,12 +45,13 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
-# Use pactl to adjust volume in PulseAudio.
+# Volume control bindings for ALSA
 set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master 10%+ && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master 10%- && $refresh_i3status
+bindsym XF86AudioMute exec --no-startup-id amixer set Master toggle && $refresh_i3status
+bindsym XF86AudioMicMute exec --no-startup-id amixer set Capture toggle && $refresh_i3status
 bindsym XF86MonBrightnessUp exec $HOME/dotfiles/scripts/brightness.sh + 
 bindsym XF86MonBrightnessDown exec $HOME/dotfiles/scripts/brightness.sh -
 bindsym $alt+XF86MonBrightnessUp exec $HOME/dotfiles/scripts/brightness.sh DP-0 + 
@@ -129,7 +130,7 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
-# Define names for default workspaces for which we configure key bindings later on.
+# Define names for default workspaces forjetbrains-idea which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
 set $ws1 "1"
 set $ws2 "2"
@@ -143,16 +144,16 @@ set $ws9 "9"
 set $ws10 "10"
 
 
-workspace $ws1 output DP-0
-workspace $ws2 output DP-0
-workspace $ws3 output eDP-1-1
-workspace $ws4 output eDP-1-1
+workspace $ws1 output DP-1-0
+workspace $ws2 output HDMI-1-0
+workspace $ws3 output DP-1-0
+workspace $ws4 output DP-1-0
 workspace $ws5 output DP-0
 workspace $ws6 output DP-0
-workspace $ws7 output DP-0
-workspace $ws8 output DP-0
-workspace $ws9 output DP-0
-workspace $ws10 output eDP-1-1
+workspace $ws7 output DP-1-0
+workspace $ws8 output DP-1-0
+workspace $ws9 output DP-1-0
+workspace $ws10 output DP-1-0
  
 
 # switch to workspace
@@ -164,6 +165,7 @@ bindsym $mod+5 workspace number $ws5
 bindsym $mod+6 workspace number $ws6
 bindsym $mod+7 workspace number $ws7
 bindsym $mod+8 workspace number $ws8
+
 bindsym $mod+9 workspace number $ws9
 bindsym $mod+0 workspace number $ws10
 
@@ -190,12 +192,11 @@ bindsym $mod+Control+Right move workspace to output right
 
 
 # Application shortcuts
-bindsym $mod+F2 exec firefox
-bindsym $mod+Shift+F2 exec jetbrains-toolbox
+bindsym $mod+F2 exec google-chrome
+bindsym $mod+Shift+F2 exec intellij-idea
 bindsym $mod+Shift+p exec postman
 bindsym $mod+Shift+m exec --no-startup-id spotify
-bindsym $alt+space exec pcmanfm
-bindsym $mod+equal exec = 
+bindsym $mod+equal exec gnome-calculator
 
 # Make the currently focused window a scratchpad
 bindsym $mod+Shift+minus move scratchpad
@@ -204,10 +205,12 @@ bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
 # Change keyboard layout
-bindsym $alt+Shift+l exec xkb-switch -n
+bindsym $alt+space exec /home/furkan/dotfiles/scripts/toggle_layout.sh
 
 # scrot & gimp - select window or rectangle
-bindsym Print --release exec $HOME/.scripts/ss.sh
+
+bindsym Print --release exec /home/furkan/dotfiles/scripts/ss.sh
+
 
 # Start applications on i3 startup
 exec --no-startup-id thunderbird
@@ -215,18 +218,18 @@ exec --no-startup-id thunderbird
 #exec --no-startup-id teams-for-linux
 #exec --no-startup-id discord
 exec --no-startup-id blueman-applet
-exec --no-startup-id rescuetime
 exec --no-startup-id telegram-desktop
 
 
 # Open applications on specific workspaces
 assign [title="Mozilla Firefox"] $ws1
-assign [title="Intellij IDEA"] $ws2
+assign [class="jetbrains-idea"] $ws2
 assign [class="Slack"] $ws3
 for_window [title="^Microsoft Teams"] move container to workspace 3
 assign [title="Discord"] $ws4
 assign [title="Telegram"] $ws4
 assign [title="Zoom"] $ws3
+
 assign [class="thunderbird"] $ws4
 assign [title="Robo 3T"] $ws6
 
@@ -237,6 +240,7 @@ for_window [title="Spotify Premium"] floating enable border pixel 1 move contain
 for_window [class="Nitrogen"] floating enable sticky enable border normal
 for_window [title="Bluetooth Devices"] floating enable border pixel 1
 for_window [class="Toggl Desktop"] floating enable border pixel 1
+for_window [class="gnome-calculator"] floating enable border pixel 1
 #for_window [title="Android Emulator"] floating enable border pixel 1
 
 # switch to workspace with urgent window automatically
@@ -323,7 +327,7 @@ client.unfocused         $base01 $base00 $base05 $base01   $base01
 #	font pango: Jetbrains Mono 16
 #        colors {
 #        # bar background color
-#        background $bg
+#        background $class
 #        # text color used for blocks that do not have a color specified.
 #        statusline $yellow
 #        # workspaces section            
