@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/furkanbegen/.oh-my-zsh"
+export ZSH="/Users/F_BEGEN/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -75,7 +75,7 @@ source $ZSH/oh-my-zsh.sh
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -109,6 +109,21 @@ export LC_ALL=en_US.UTF-8
 export GPG_TTY=`tty`
 
 
+merge_kubeconfigs() {
+  local kube_dir="$HOME/.kube/config"
+  export KUBECONFIG=$(find "$kube_dir" -type f -name "*.yaml" | paste -sd ":" -)
+  if [[ -z "$KUBECONFIG" ]]; then
+    echo "No kubeconfig files found in $kube_dir"
+    return 1
+  fi
+  kubectl config view --merge --flatten > "$HOME/.kube/merged-config.yaml"
+  mv "$HOME/.kube/config.yaml" "$HOME/.kube/config"
+  echo "Merged kubeconfigs into ~/.kube/config"
+}
+
+
+
+
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/Users/furkanbegen/.sdkman"
-[[ -s "/Users/furkanbegen/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/furkanbegen/.sdkman/bin/sdkman-init.sh"
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
