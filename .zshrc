@@ -100,6 +100,8 @@ export LANG=en_US.UTF-8
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 alias la='ls -A'
+alias docker='podman'
+alias vim='nvim'
 
 export GOPATH=$HOME/go
 export GOBIN=$GOPATH/bin
@@ -122,8 +124,23 @@ merge_kubeconfigs() {
 }
 
 
+export TMPDIR="$HOME/.tmp"
+mkdir -p "$TMPDIR"
+chmod 700 "$TMPDIR"
 
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+# bun completions
+[ -s "/Users/F_BEGEN/.bun/_bun" ] && source "/Users/F_BEGEN/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# Added by Windsurf
+export PATH="/Users/F_BEGEN/.codeium/windsurf/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="/opt/homebrew/opt/helm@3/bin:$PATH"
