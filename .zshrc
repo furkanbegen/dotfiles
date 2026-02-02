@@ -100,8 +100,15 @@ export LANG=en_US.UTF-8
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 alias la='ls -A'
-alias docker='podman'
+#alias docker='podman'
 alias vim='nvim'
+alias v='nvim'
+
+# Point Docker CLI to Podman
+export DOCKER_HOST="unix://$(podman machine inspect --format '{{.ConnectionInfo.PodmanSocket.Path}}')"
+# Ensure 'docker' points to the real binary for plugins like scout
+alias docker='/opt/homebrew/bin/docker'
+alias list-prs='gh search prs --owner="sarp-dev-team" --author="@me" --state="open"'
 
 export GOPATH=$HOME/go
 export GOBIN=$GOPATH/bin
@@ -127,6 +134,10 @@ merge_kubeconfigs() {
 export TMPDIR="$HOME/.tmp"
 mkdir -p "$TMPDIR"
 chmod 700 "$TMPDIR"
+
+
+#Auto completion for velero
+source <(velero completion zsh)
 
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!

@@ -1,3 +1,4 @@
+
 theme = "light:Catppuccin Latte,dark:Catppuccin Mocha"
 font-family = "Hack Nerd Font Mono"
 font-size = 16
@@ -11,6 +12,9 @@ adjust-cursor-thickness = 300%
 confirm-close-surface = false
 
 window-theme = system
+
+
+title = " "
 
 # don't show an overlay when resizing a window
 resize-overlay = never
