@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -8,7 +15,7 @@ export ZSH="/Users/F_BEGEN/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="warlord"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -136,8 +143,21 @@ mkdir -p "$TMPDIR"
 chmod 700 "$TMPDIR"
 
 
-#Auto completion for velero
-source <(velero completion zsh)
+# velero completion (lazy-loaded to keep shell startup fast)
+__velero_load_completion() {
+  (( $+functions[__velero_completion_loaded] )) && return 0
+  __velero_completion_loaded() { :; }
+
+  command -v velero >/dev/null 2>&1 || return 1
+  source <(command velero completion zsh)
+}
+
+_velero_lazy() {
+  __velero_load_completion || return 1
+  _velero "$@"
+}
+
+(( $+functions[compdef] )) && compdef _velero_lazy velero
 
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
@@ -155,3 +175,25 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 export PATH="/Users/F_BEGEN/.codeium/windsurf/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="/opt/homebrew/opt/helm@3/bin:$PATH"
+
+
+# nvm (lazy-loaded to keep shell startup fast)
+export NVM_DIR="$HOME/.nvm"
+
+__nvm_load() {
+  unset -f nvm node npm npx yarn pnpm corepack 2>/dev/null
+
+  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && . "/opt/homebrew/opt/nvm/nvm.sh"
+  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && . "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
+}
+
+nvm() { __nvm_load; nvm "$@"; }
+node() { __nvm_load; node "$@"; }
+npm() { __nvm_load; npm "$@"; }
+npx() { __nvm_load; npx "$@"; }
+yarn() { __nvm_load; yarn "$@"; }
+pnpm() { __nvm_load; pnpm "$@"; }
+corepack() { __nvm_load; corepack "$@"; }
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
