@@ -110,6 +110,7 @@ alias la='ls -A'
 #alias docker='podman'
 alias vim='nvim'
 alias v='nvim'
+alias k='kubectl'
 
 # Point Docker CLI to Podman
 export DOCKER_HOST="unix://$(podman machine inspect --format '{{.ConnectionInfo.PodmanSocket.Path}}')"
