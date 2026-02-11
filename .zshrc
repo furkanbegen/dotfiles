@@ -178,23 +178,10 @@ export PATH="$HOME/.local/bin:$PATH"
 export PATH="/opt/homebrew/opt/helm@3/bin:$PATH"
 
 
-# nvm (lazy-loaded to keep shell startup fast)
+# NVM (properly load at startup)
 export NVM_DIR="$HOME/.nvm"
-
-__nvm_load() {
-  unset -f nvm node npm npx yarn pnpm corepack 2>/dev/null
-
-  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && . "/opt/homebrew/opt/nvm/nvm.sh"
-  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && . "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
-}
-
-nvm() { __nvm_load; nvm "$@"; }
-node() { __nvm_load; node "$@"; }
-npm() { __nvm_load; npm "$@"; }
-npx() { __nvm_load; npx "$@"; }
-yarn() { __nvm_load; yarn "$@"; }
-pnpm() { __nvm_load; pnpm "$@"; }
-corepack() { __nvm_load; corepack "$@"; }
+[ -s "$HOME/.nvm/nvm.sh" ] && . "$HOME/.nvm/nvm.sh"
+[ -s "$HOME/.nvm/bash_completion" ] && . "$HOME/.nvm/bash_completion"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
