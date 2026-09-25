@@ -25,6 +25,17 @@ window-save-state = always
 shell-integration = zsh
 window-inherit-working-directory=true
 
+# Clipboard settings - fix paste only showing first character
+clipboard-read = allow
+clipboard-write = allow
+clipboard-paste-protection = false
+clipboard-paste-bracketed-safe = false
+clipboard-trim-trailing-spaces = false
+shell-integration-features = no-cursor,no-sudo,no-title
+
+# OSC 52 clipboard support
+#clipboard-osc-52 = allow
+
 
 # The opacity level (opposite of transparency) of an unfocused split.
 # Unfocused splits by default are slightly faded out to make it easier to see
@@ -75,3 +86,15 @@ keybind = super+9=text:\x06\x39
 
 # Open search until scrollback is finished
 # keybind = super+f=write_screen_file:open
+keybind = shift+enter=text:\x1b\r
+copy-on-select = true
+
+# Option must act as Alt (Esc+) so pi bindings work (alt+m dictate,
+# alt+n cancel, alt+enter follow-up, alt+up dequeue)
+macos-option-as-alt = true
+
+# Dictate on ANY keyboard layout: cmd+shift+m sends "ESC m" (= alt+m to pi),
+# cmd+shift+n sends "ESC n" (= alt+n cancel). Turkish layout's ⌥m produces µ
+# instead of an Alt keypress, so don't rely on Option for dictation.
+keybind = super+shift+m=text:\x1bm
+keybind = super+shift+n=text:\x1bn
