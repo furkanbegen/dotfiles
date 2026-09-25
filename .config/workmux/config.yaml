@@ -1,0 +1,10 @@
+mode: session
+nerdfont: true
+agent: opencode
+
+windows:
+  - name: nvim
+    panes:
+      - command: nvim
+        name: nvim
+        focus: true
