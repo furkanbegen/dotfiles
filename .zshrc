@@ -91,6 +91,7 @@ export LANG=en_US.UTF-8
 #   export EDITOR='mvim'
 # fi
 
+export EDITOR='nvim'
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
@@ -176,12 +177,21 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 export PATH="/Users/F_BEGEN/.codeium/windsurf/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="/opt/homebrew/opt/helm@3/bin:$PATH"
-
-
-# NVM (properly load at startup)
-export NVM_DIR="$HOME/.nvm"
-[ -s "$HOME/.nvm/nvm.sh" ] && . "$HOME/.nvm/nvm.sh"
-[ -s "$HOME/.nvm/bash_completion" ] && . "$HOME/.nvm/bash_completion"
+export BROWSER="Zen"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# Use Node 22 (required by isolated-vm in @backstage/plugin-scaffolder-backend)
+export PATH="/opt/homebrew/opt/node@22/bin:$PATH"
+# Workaround for EPIPE errors in Node 22
+export NODE_OPTIONS="--max-old-space-size=4096"
+
+# Fix clipboard paste in cmux - only first letter issue
+# Disable bracketed paste mode to fix OpenCode clipboard compatibility
+unset zle_bracketed_paste
+
+
+# Kubectl alias with insecure TLS skip
+alias k='kubectl'
+
+[[ -f ~/dotfiles/.zshrc.local ]] && source ~/dotfiles/.zshrc.local
