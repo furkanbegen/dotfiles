@@ -18,12 +18,42 @@ list_entries() {
     for group in personal dev; do
         for directory in "$HOME/$group/"*/; do
             directory=${directory%/}
-            project="$group/${directory##*/}"
-            session_name=${project//[.:]/_}
-            if grep -Fxq -- "$session_name" <<< "$existing_sessions"; then
+            name=${directory##*/}
+            [[ $name == .* ]] && continue
+
+            if [[ -d "$directory/.git" ]]; then
+                project="$group/$name"
+                session_name=${project//[.:]/_}
+                if grep -Fxq -- "$session_name" <<< "$existing_sessions"; then
+                    continue
+                fi
+                printf '%s\n' "$project"
                 continue
             fi
-            printf '%s\n' "$project"
+
+            has_sub=0
+            for sub in "$directory/"*/; do
+                [[ -d $sub ]] || continue
+                sub=${sub%/}
+                sub_name=${sub##*/}
+                [[ $sub_name == .* ]] && continue
+                has_sub=1
+                project="$group/$name/$sub_name"
+                session_name=${project//[.:]/_}
+                if grep -Fxq -- "$session_name" <<< "$existing_sessions"; then
+                    continue
+                fi
+                printf '%s\n' "$project"
+            done
+
+            if [[ $has_sub -eq 0 ]]; then
+                project="$group/$name"
+                session_name=${project//[.:]/_}
+                if grep -Fxq -- "$session_name" <<< "$existing_sessions"; then
+                    continue
+                fi
+                printf '%s\n' "$project"
+            fi
         done
     done
 }
